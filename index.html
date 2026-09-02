@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f6b5b" />
     <title>U2LINK · 협력사 검사 연동 프로토타입</title>
+    <script>
+    (()=>{const p=new URLSearchParams(location.search),m=p.get('potpolio')==='1';if(m){let r=document.head.querySelector('meta[name="robots"]');if(!r){r=document.createElement('meta');r.name='robots';document.head.appendChild(r)}r.content='noindex,nofollow,noarchive,nosnippet';document.documentElement.dataset.presentationMode='portfolio';const k=v=>{try{const u=new URL(v,location.href);if(u.origin!==location.origin)return v;u.searchParams.set('potpolio','1');return u.href}catch{return v}};document.addEventListener('click',e=>{const a=e.target.closest?.('a[href]');if(a&&!a.href.startsWith('javascript:')&&!a.href.startsWith('mailto:')&&!a.href.startsWith('tel:'))a.href=k(a.href)},true);['pushState','replaceState'].forEach(n=>{const o=history[n];history[n]=function(s,t,u){return o.call(this,s,t,u?k(u):u)}});return}const s=document.createElement('script');s.src='./presentation-standard.js';s.defer=true;s.dataset.project='U2LINK 검사·결과 관리 플랫폼';s.dataset.caseStudy='u2link';document.head.appendChild(s)})();
+    </script>
     <script type="module" crossorigin src="/assets/index-DbrtqQ7J.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DnX2rHRk.css">
   </head>
