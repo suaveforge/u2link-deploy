@@ -1,0 +1,24 @@
+name: SiteHub SearchOps complete p06 once
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/sitehub-searchops-complete-once.yml']
+permissions: {contents: write}
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply complete SiteHub contract
+        env:
+          PROJECT_ID: p06
+          PUBLIC_URL: https://u2link.suaveforge.com/
+          PROJECT_NAME: U2LINK LIS·NGS
+          DESCRIPTION: U2LINK는 협력사 검사 업무와 LIS·NGS 결과 연계를 한 흐름으로 확인하고 관리하는 검사 연동 시스템입니다.
+        run: |
+          set -Eeuo pipefail
+          curl -fsSL https://raw.githubusercontent.com/suaveforge/sitehub-deploy/8289fa3e45143954bda73514ad6fd3667d90891d/searchops/static-complete-adapter.py -o /tmp/sitehub.py
+          python /tmp/sitehub.py
+          git config user.name 'SuaveForge SiteHub'; git config user.email '53187583+programmer119@users.noreply.github.com'
+          git add index.html sitemap.xml robots.txt
+          if ! git diff --cached --quiet; then git commit -m 'Apply SiteHub SearchOps p06'; git push; fi
